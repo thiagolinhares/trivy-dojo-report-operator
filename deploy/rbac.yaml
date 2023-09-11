@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  namespace: mgmt
+  namespace: security-tools
   name: trivy-dojo-report-account
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -37,4 +37,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: trivy-dojo-report-account
-    namespace: "mgmt"
+    namespace: security-tools

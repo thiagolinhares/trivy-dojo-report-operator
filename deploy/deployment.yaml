@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: trivy-dojo-report-operator
-  namespace: mgmt
+  namespace: security-tools
 spec:
   replicas: 1
   strategy:
@@ -27,7 +27,6 @@ spec:
               key: api-key
               name: defect-dojo-api-credentials
               optional: false
-
         - name: DEFECT_DOJO_URL
           valueFrom:
             secretKeyRef:
@@ -43,14 +42,23 @@ spec:
         - name: DEFECT_DOJO_CLOSE_OLD_FINDINGS_PRODUCT_SCOPE
           value: "false"
         - name: DEFECT_DOJO_PUSH_TO_JIRA
-          value: "false"
+          value: "false"          
         - name: DEFECT_DOJO_MINIMUM_SEVERITY
-          value: "Info"
+          value: "Low"
         - name: DEFECT_DOJO_AUTO_CREATE_CONTEXT
           value: "true"
         - name: DEFECT_DOJO_DEDUPLICATION_ON_ENGAGEMENT
           value: "true"
+        - name: DEFECT_DOJO_DO_NOT_REACTIVATE
+          value: "true"
+        - name: DEFECT_DOJO_GROUP_BY
+          value: "component-name"
+        - name: DEFECT_DOJO_ENVIRONMENT
+          value: "Lab"
         - name: DEFECT_DOJO_PRODUCT_TYPE_NAME
           value: "Research and Development"
-        - name: DEFECT_DOJO_TEST_TITLE
-          value: "Kubernetes"
+        - name: DEFECT_DOJO_PRODUCT_NAME
+          value: "k8s-dojo-operator-try-01"          
+
+
+        resources: {}
