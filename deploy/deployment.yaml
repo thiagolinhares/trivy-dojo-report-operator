@@ -19,7 +19,7 @@ spec:
       serviceAccountName: trivy-dojo-report-account
       containers:
       - name: trivy-dojo-report-operator
-        image: ghcr.io/telekom-mms/docker-trivy-dojo-operator:latest
+        image: thiagolinhares/docker-trivy-dojo-operator:1.0
         env:
         - name: DEFECT_DOJO_API_KEY
           valueFrom:
@@ -58,7 +58,5 @@ spec:
         - name: DEFECT_DOJO_PRODUCT_TYPE_NAME
           value: "Research and Development"
         - name: DEFECT_DOJO_PRODUCT_NAME
-          value: "k8s-dojo-operator-try-01"          
-
-
+          value: "k8s-dojo-operator-try-01"
         resources: {}
